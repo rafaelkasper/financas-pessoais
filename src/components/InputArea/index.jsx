@@ -47,7 +47,7 @@ export const InputArea = ({ onAdd }) => {
   };
 
   return (
-    <div className="container">
+    <div className="form-container">
       <label className="inputLabel">
         <div className="inputTitle">Data</div>
         <input
@@ -78,7 +78,6 @@ export const InputArea = ({ onAdd }) => {
         <div className="inputTitle">Título</div>
         <input
           className="input"
-          type="text"
           value={titleField}
           onChange={(e) => setTitleField(e.target.value)}
         />

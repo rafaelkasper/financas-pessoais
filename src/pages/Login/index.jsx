@@ -10,7 +10,7 @@ const Login = () => {
   const [message, setMessage] = useState("");
 
   const handleLogin = () => {
-    fetch("public/users.json")
+    fetch("/users.json")
       .then((response) => response.json())
       .then((data) => {
         const users = data.users;

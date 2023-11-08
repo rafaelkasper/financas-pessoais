@@ -1,5 +1,7 @@
 .tableColumn {
   padding: 10px 0;
+  text-align: left;
+  color: #000;
 }
 
 .category {

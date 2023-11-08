@@ -4,7 +4,7 @@ import "./index.css";
 
 export const TableItem = ({ item }) => {
   return (
-    <div>
+    <tr>
       <td className="tableColumn">{formatDate(item.date)}</td>
       <td className="tableColumn">
         <div
@@ -18,11 +18,13 @@ export const TableItem = ({ item }) => {
       <td className="tableColumn">
         <div
           className="value"
-          style={{ color: categories[item.category].expense ? "red" : "green" }}
+          style={{
+            color: categories[item.category].expense ? "red" : "green",
+          }}
         >
           R$ {item.value}
         </div>
       </td>
-    </div>
+    </tr>
   );
 };

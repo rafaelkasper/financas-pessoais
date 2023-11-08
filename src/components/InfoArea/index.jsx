@@ -18,7 +18,7 @@ export const InfoArea = ({ currentMonth, onMonthChange, income, expense }) => {
   };
 
   return (
-    <div className="container">
+    <div className="info-container">
       <div className="monthArea">
         <div className="monthArrow" onClick={handlePrevMonth}>
           ⬅️
@@ -29,12 +29,12 @@ export const InfoArea = ({ currentMonth, onMonthChange, income, expense }) => {
         </div>
       </div>
       <div className="resumeArea">
-        <ResumeItem title="Receitas" value={income} />
-        <ResumeItem title="Despesas" value={expense} />
+        <ResumeItem title="Receitas" value={income} color={"green"} />
+        <ResumeItem title="Despesas" value={expense} color={"red"} />
         <ResumeItem
           title="Balanço"
           value={income - expense}
-          style={{ color: income - expense < 0 ? "red" : "green" }}
+          color={income - expense < 0 ? "red" : "green"}
         />
       </div>
     </div>
