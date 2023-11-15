@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <img src="public/images/logo.png" style={{ width: 50 }} />
+      <img src="/images/logo.png" style={{ width: 50 }} />
       <h2 className="login-title">Login</h2>
       <input
         type="text"
