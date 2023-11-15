@@ -14,13 +14,13 @@ export const items = [
   {
     date: new Date(2023, 11, 16),
     category: "rent",
-    title: "Aluguel Apt",
+    title: "Aluguel Casa Praia",
     value: 2300,
   },
   {
     date: new Date(2023, 11, 18),
     category: "salary",
-    title: "Salário ACME",
-    value: 4500,
+    title: "Salário Programador",
+    value: 45000,
   },
 ];

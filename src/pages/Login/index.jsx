@@ -1,27 +1,22 @@
 import { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 const Login = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
   const [message, setMessage] = useState("");
 
-  const handleLogin = () => {
-    fetch("/users.json")
+  const handleLogin = async () => {
+    await fetch("/users.json")
       .then((response) => response.json())
       .then((data) => {
         const users = data.users;
         const user = users.find(
           (u) => u.username === username && u.password === password
         );
-        console.log(user);
         if (user) {
-          setAuthenticated(true);
-          setMessage("Login bem-sucedido!");
-          console.log("Login bem-sucedido!");
           localStorage.setItem("authenticated", "true");
           navigate("/dashboard");
         } else {
@@ -30,12 +25,9 @@ const Login = () => {
       });
   };
 
-  if (authenticated) {
-    return redirect("/dashboard");
-  }
-
   return (
     <div className="login-container">
+      <img src="public/images/logo.png" style={{ width: 50 }} />
       <h2 className="login-title">Login</h2>
       <input
         type="text"

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { categories } from "../../data/categories";
 import { items } from "../../data/items";
 import { getCurrentMonth, filterListByMonth } from "../../helpers/dateFilter";
@@ -8,11 +9,14 @@ import { InputArea } from "../../components/InputArea";
 import "./index.css";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [list, setList] = useState(items);
   const [filteredList, setFilteredList] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
+
+  const authenticated = JSON.parse(localStorage.getItem("authenticated"));
 
   useEffect(() => {
     setFilteredList(filterListByMonth(list, currentMonth));
@@ -44,10 +48,23 @@ const Dashboard = () => {
     setList(newList);
   };
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.setItem("authenticated", "false");
+    navigate("/login");
+  };
+
+  if (!authenticated) {
+    navigate("/login");
+  }
+
   return (
     <div>
       <div className="header">
-        <h1 className="headerText">Sistema Financeiro</h1>
+        <h1 className="headerText">Sistema Financeiro </h1>
+        <button className="logout" onClick={handleLogout}>
+          Logout
+        </button>
       </div>
       <div className="body">
         <InfoArea
