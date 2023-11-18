@@ -30,7 +30,7 @@ export const InputArea = ({ onAdd }) => {
       alert(errors.join("\n"));
     } else {
       onAdd({
-        date: new Date(dateField),
+        date: new Date(dateField.concat("T00:00")),
         category: categoryField,
         title: titleField,
         value: valueField,

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { categories } from "../../data/categories";
-import { items } from "../../data/items";
 import { getCurrentMonth, filterListByMonth } from "../../helpers/dateFilter";
 import { TableArea } from "../../components/TableArea";
 import { InfoArea } from "../../components/InfoArea";
@@ -10,7 +9,7 @@ import "./index.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const [list, setList] = useState(items);
+  const [list, setList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
   const [income, setIncome] = useState(0);
@@ -46,6 +45,7 @@ const Dashboard = () => {
     let newList = [...list];
     newList.push(item);
     setList(newList);
+    localStorage.setItem("finances", JSON.stringify(newList));
   };
 
   const handleLogout = (e) => {
@@ -57,6 +57,13 @@ const Dashboard = () => {
   if (!authenticated) {
     navigate("/login");
   }
+
+  useEffect(() => {
+    const savedList = JSON.parse(localStorage.getItem("finances"));
+    if (savedList) {
+      setList(savedList);
+    }
+  }, []);
 
   return (
     <div>
