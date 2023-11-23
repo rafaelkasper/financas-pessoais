@@ -22,7 +22,7 @@ export const TableArea = ({ list }) => {
       </thead>
       <tbody>
         {list.map((item, index) => (
-          <TableItem key={index} item={item} />
+         return <TableItem key={index} item={item} />
         ))}
       </tbody>
     </table>
